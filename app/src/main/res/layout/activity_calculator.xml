@@ -41,13 +41,13 @@
         <Button android:id="@+id/btn7" android:text="7" style="@style/NumberButton" />
         <Button android:id="@+id/btn8" android:text="8" style="@style/NumberButton" />
         <Button android:id="@+id/btn9" android:text="9" style="@style/NumberButton" />
-        <Button android:id="@+id/btnDivide" android:text=":" style="@style/OperatorButton" />
+        <Button android:id="@+id/btnDivide" android:text="/" style="@style/OperatorButton" />
 
         <!-- Row 2 -->
         <Button android:id="@+id/btn4" android:text="4" style="@style/NumberButton" />
         <Button android:id="@+id/btn5" android:text="5" style="@style/NumberButton" />
         <Button android:id="@+id/btn6" android:text="6" style="@style/NumberButton" />
-        <Button android:id="@+id/btnMultiply" android:text="×" style="@style/OperatorButton" />
+        <Button android:id="@+id/btnMultiply" android:text="*" style="@style/OperatorButton" />
 
         <!-- Row 3 -->
         <Button android:id="@+id/btn1" android:text="1" style="@style/NumberButton" />

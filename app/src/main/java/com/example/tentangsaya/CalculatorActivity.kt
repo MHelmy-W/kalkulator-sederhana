@@ -41,12 +41,14 @@ class CalculatorActivity : AppCompatActivity() {
             }
         }
 
-
         operatorButtons.forEach { id ->
             findViewById<Button>(id)?.setOnClickListener {
-                expression += " " + findViewById<Button>(id)?.text.toString() + " " // Add spaces around operators
-                tvResult.text = expression
-                playSound(mediaPlayerOperator)
+                val op = findViewById<Button>(id)?.text.toString()
+                if (expression.isNotEmpty() && !"+-*/".contains(expression.last())) {
+                    expression += op
+                    tvResult.text = expression
+                    playSound(mediaPlayerOperator)
+                }
             }
         }
 
@@ -70,13 +72,12 @@ class CalculatorActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnExit).setOnClickListener {
             finish()
         }
-
     }
 
-    private fun playSound(mediaPlayer: MediaPlayer?) { // Make MediaPlayer nullable
-        mediaPlayer?.let {  // Use let to safely play if not null
-            if (it.isPlaying) { // Check if already playing
-                it.seekTo(0) // Restart the sound
+    private fun playSound(mediaPlayer: MediaPlayer?) {
+        mediaPlayer?.let {
+            if (it.isPlaying) {
+                it.seekTo(0)
             } else {
                 it.start()
             }
@@ -84,7 +85,11 @@ class CalculatorActivity : AppCompatActivity() {
     }
 
     private fun evaluateExpression(exp: String): Double {
-        return exp.replace(" ", "").let { eval(it) }
+        return try {
+            eval(exp)
+        } catch (e: Exception) {
+            Double.NaN
+        }
     }
 
     private fun eval(expression: String): Double {
@@ -128,7 +133,11 @@ class CalculatorActivity : AppCompatActivity() {
                 while (true) {
                     when {
                         eat('*'.code) -> x *= parseFactor()
-                        eat('/'.code) -> x /= parseFactor()
+                        eat('/'.code) -> {
+                            val divisor = parseFactor()
+                            if (divisor == 0.0) throw ArithmeticException("Division by zero")
+                            x /= divisor
+                        }
                         else -> return x
                     }
                 }
@@ -145,7 +154,7 @@ class CalculatorActivity : AppCompatActivity() {
                     eat(')'.code)
                 } else if (ch in '0'.code..'9'.code || ch == '.'.code) {
                     while (ch in '0'.code..'9'.code || ch == '.'.code) nextChar()
-                    x = expression.substring(startPos, pos).toDouble()
+                    x = expression.substring(startPos, pos).toDoubleOrNull() ?: throw RuntimeException("Invalid number format")
                 } else {
                     throw RuntimeException("Unexpected: " + ch.toChar())
                 }
