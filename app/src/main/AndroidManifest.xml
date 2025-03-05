@@ -13,14 +13,25 @@
         android:theme="@style/Theme.TentangSaya"
         tools:targetApi="31">
         <activity
+            android:name=".EditNoteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddNoteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NoteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RecyclerView"
+            android:exported="false" />
+        <activity
             android:name=".RegisterActivity"
             android:exported="true" />
         <activity
             android:name=".CalculatorActivity"
-            android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".Calculator"-->
-<!--            android:exported="false" />-->
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".Calculator" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".MainActivity2"
             android:exported="true">
@@ -32,15 +43,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"/>
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-<!--        </activity>-->
+            android:exported="true" />
     </application>
 
 </manifest>

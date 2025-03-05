@@ -40,6 +40,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.cardNote.setOnClickListener {
+            val intent = Intent(this, NoteActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.button.setOnClickListener {
             finish()
         }

@@ -30,7 +30,7 @@ class MainActivity2 : AppCompatActivity() {
         val usernameEditText = findViewById<EditText>(R.id.editTextUsername)
         val passwordEditText = findViewById<EditText>(R.id.editTextPassword)
         val loginButton = findViewById<Button>(R.id.buttonLogin)
-//        val registerButton = findViewById<TextView>(R.id.buttonRegis)
+        val registerButton = findViewById<TextView>(R.id.buttonRegister)
 
         loginButton.setOnClickListener {
 
@@ -49,8 +49,8 @@ class MainActivity2 : AppCompatActivity() {
 //            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
 //            insets
 //        }
-//        registerButton.setOnClickListener {
-//            startActivity(Intent(this, RegisterActivity::class.java))
-//        }
+        registerButton.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
+        }
     }
 }
